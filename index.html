@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="templates">
+        <template class="birds-templates">
+            <img class="brown-duck" src="./images/lightBrownDuck.gif">
+            <img class="red-sparrow" src="./images/redBird.gif">
+            <img class="white-duck" src="./images/whiteDuck.gif">
+        </template>
+        <template class="main-menu-template">
+            <div class="main-menu">
+                <div class="grid-container settings-grid-container">
+                    <p class="settings-grid-item header-grid-item">Settings</p>
+                    <select name="levels" class="settings-grid-item levels-select-grid-item">
+                        <option value="0">Select Level</option>
+                        <option value="1">Easy</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Hard</option>
+                    </select>
+                    <input class="settings-grid-item input-grid-item" type="text" placeholder="Enter your name">
+                    <button class="settings-grid-item button-grid-item">GO</button>
+                </div>
+                <div class="grid-container info-grid-container">
+                    <p class="info-grid-item info-header-grid-item">Points</p>
+                    <img class="info-grid-item img-item" src="./images/whiteDuck.gif" alt="">
+                    <label class="info-grid-item label-item" for="score points">+10 points</label>
+                    <img class="info-grid-item img-item" src="./images/lightBrownDuck.gif" alt="">
+                    <label class="info-grid-item label-item" for="score points">+5 points</label>
+                    <img class="info-grid-item img-item" src="./images/redBird.gif" alt="">
+                    <label class="info-grid-item label-item" for="score points">-10 points</label>
+    
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <script src="./scripts/duck.js"></script>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
