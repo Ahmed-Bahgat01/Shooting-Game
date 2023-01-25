@@ -6,6 +6,8 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    /* this is important */
+    overflow: hidden; 
 }
 .main-menu{
     display: flex;
@@ -15,25 +17,25 @@ body{
 }
 .grid-container{
     background-color: rgba(128, 128, 128, 0.589);
-    width: 1500px;
+    width: 250px;
     height: fit-content;
     border: solid;
     /* border-color: rgb(27, 246, 49); */
     border-color: white;
     /* border-color: grey; */
-    border-radius: 50px;
+    border-radius: 25px;
     border-width: 1px;
 }
 .settings-grid-container{
     display: grid;
     grid-template-rows: 2fr, 1fr, 1fr;
     grid-template-columns: auto;
-    gap: 50px;
+    gap: 10px;
 }
 .settings-grid-item{
     margin: 0px;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 5px;
+    border-radius: 25px;
     background-color: rgba(128, 128, 128, 0);
     color: white;
     text-align: center;
@@ -46,23 +48,25 @@ body{
     background-color: rgba(128, 128, 128, 0.471);
 }
 .header-grid-item{
-    font-size: 5em;
+    font-size: 1.5em;
     font-weight: bold;
     text-decoration:underline;
     border: none;
     background-color: black;
-    border-radius: 50px;
+    border-radius: 25px;
+    margin: 0;
+    padding: 15px;
 }
 .levels-select-grid-item{
     font-family: 'Times New Roman';
-    font-size: 3em;
+    font-size: 1em;
 }
 .levels-select-grid-item > option{
     background-color: rgb(37, 37, 38);
 }
 
 .input-grid-item{
-    font-size: 3em;
+    font-size: 1em;
     border: solid;
     border-width: 1px;
     border-color: grey;
@@ -72,13 +76,14 @@ body{
     color: rgb(162, 162, 162);
 }
 .button-grid-item{
-    font-size: 3em;
+    font-size: 1em;
     font-weight: bolder;
-    border-radius: 50px;
+    /* border-radius: 25px; */
     background-color: rgba(0, 128, 0, 0.549);
     /* transition-duration: 0.2s; */
     cursor:pointer;
-    margin:3px;
+    margin: 0;
+    padding: 15px;
     /* border-width: 1px; */
     /* border-color: grey; */
 }
@@ -97,8 +102,10 @@ body{
     margin-top: 50px;
 }
 .info-grid-item{
-    font-size: 5em;
+    font-size: 1em;
     color: white;
+    /* margin-right: 0px; */
+    /* border: solid red; */
 }
 .info-header-grid-item{
     grid-column: 1 / -1;
@@ -107,28 +114,42 @@ body{
     text-decoration: underline;
     background-color: black;
     margin: 0;
-    padding: 20px;
-    border-radius: 50px;
+    padding: 15px;
+    border-radius: 25px;
+    font-size: 1.5em;
     
 }
 .label-item{
-    padding-top: 15%;
+    padding-top: 20%;
+    text-align: center;
 }
 .img-item{
-    width: 400px;
-    height: 300px;
-    padding-inline-start: 220px;
+    width: 100px;
+    height: 75px;
+    /* padding-inline-start: 220px; */
 }
 
 
-.red-sparrow{
-    width: 400px;
+.red-sparrow-template{
+    width: 150px;
 }
 
-.brown-duck{
-    width: 500px;
+.brown-duck-template{
+    width: 200px;
 }
 
-.white-duck{
-    width: 350px;
+.white-duck-template{
+    width: 150px;
+}
+.bomb-template{
+    width: 150px;
+    z-index: 5;
+}
+
+.movingImgs{
+    position:absolute;
+}
+
+.hidden{
+    display: none;
 }

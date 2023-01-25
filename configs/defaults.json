@@ -1,0 +1,8 @@
+{
+  "birdMovingStep": 2,
+  "birdMovingInterval": 500,
+  "birdCreationInterval": 1000,
+  "bombMovingStep": 2,
+  "bombMovingInterval": 500,
+  "bombCreationInterval": 1000
+}
