@@ -166,3 +166,42 @@ body {
 .hidden {
   display: none;
 }
+
+/* END Game Template */
+.endGameWidget {
+  display: block;
+  border: solid red;
+  margin: auto;
+  left: 50%;
+  background-color: rgba(128, 128, 128, 0.589);
+  border-color: white;
+  max-width: fit-content;
+}
+.endGameHeader {
+  display: block;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 20px;
+  color: white;
+}
+.endGameImg {
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+.playAgainBtn {
+  font-size: 1em;
+  font-weight: bolder;
+  background-color: rgba(0, 128, 0, 0.549);
+  transition-duration: 0.2s;
+  cursor: pointer;
+  margin: auto;
+  padding: 15px;
+  border-radius: 25px;
+  display: block;
+  color: white;
+}
+.playAgainBtn:hover {
+  /* background-color: rgb(128, 208, 16); */
+  background-color: green;
+}

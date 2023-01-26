@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
   let level = 1;
 
   // =======create main menu=========
-  let templateMainMenu = this.document.querySelector(
+  const templateMainMenu = this.document.querySelector(
     '.main-menu-template'
   ).content;
   let newMainMenu = templateMainMenu.cloneNode(true);

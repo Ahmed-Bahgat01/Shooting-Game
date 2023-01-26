@@ -33,10 +33,78 @@ export class GameController {
     const createBombsInterval = setInterval(function () {
       newBomb.throwBomb();
     }, configs.gameConfigs.bombCreationInterval);
-  }
-}
 
-let createGameHeader = function () {
+    // start timer
+    startGameTimer(
+      createBirdsInterval,
+      createBombsInterval,
+      configs.gameConfigs.levelTime,
+      configs.gameConfigs.winScore
+    );
+  }
+} //class GameController
+
+// === Utility Functions ===
+
+const startGameTimer = function (
+  createBirdsInterval,
+  createBombsInterval,
+  gameTime,
+  winScore
+) {
+  // console.log('sssssssssssssss');
+  const intervalTime = 1000;
+  const timeLimitLabel = document.querySelector('.timeLimitLabel');
+  let totalTime = gameTime / 1000;
+  let minutes;
+  let seconds;
+  const gameTimeInterval = setInterval(function () {
+    // console.log(`ttttttt: ${totalTime}`);
+    minutes = Math.trunc(totalTime / 60);
+    seconds = totalTime % 60;
+    timeLimitLabel.innerHTML = `${minutes} : ${seconds}`;
+    if (totalTime == 0) {
+      // clearing intervals of objects creation
+      clearInterval(createBombsInterval);
+      clearInterval(createBirdsInterval);
+      // remove all birds and bombs
+      removeBirdsAndBombs();
+      // show win lose div
+      createEndGameWidget(winScore);
+      clearInterval(gameTimeInterval);
+    }
+    totalTime -= 1;
+  }, intervalTime);
+  console.log(`gameTimeInterval: ${gameTimeInterval}`);
+};
+
+const createEndGameWidget = function (winScore) {
+  const endGameWidgetTemplate =
+    document.querySelector('.endGameTemplate').content;
+  const newEndGameWidget = endGameWidgetTemplate.cloneNode(true);
+  const score = parseInt(document.querySelector('.scoreLabel').textContent);
+  let imgSrc;
+  let messageText;
+  if (score >= winScore) {
+    messageText = 'YOU WIN';
+    imgSrc = './images/happyHunter.png';
+  } else {
+    messageText = 'YOU LOSE';
+    imgSrc = './images/sadHunter.png';
+  }
+  newEndGameWidget.querySelector('.endGameHeader').innerHTML = messageText;
+  newEndGameWidget.querySelector('img').src = imgSrc;
+  document.body.append(newEndGameWidget);
+};
+
+const removeBirdsAndBombs = function () {
+  const imgs = document.querySelectorAll('.movingImgs');
+  imgs.forEach((img) => {
+    img.remove();
+  });
+};
+
+const createGameHeader = function () {
   let templateGameHeader = document.querySelector(
     '.gameHeaderTemplate'
   ).content;
@@ -52,17 +120,15 @@ let createGameHeader = function () {
   document.body.append(newGameHeader);
 };
 
-let killedBirdListner = function (event) {
+const killedBirdListner = function (event) {
   const scoreLabel = document.querySelector('.scoreLabel');
   const birdsKilledLabel = document.querySelector('.birdsKilledLabel');
   scoreLabel.innerHTML = parseInt(scoreLabel.innerHTML) + event.detail;
   birdsKilledLabel.innerHTML = parseInt(birdsKilledLabel.innerHTML) + 1;
   event.target.remove();
-}; //class GameController
+};
 
-// === Utility Functions ===
-
-let bombExplosionListner = function (event) {
+const bombExplosionListner = function (event) {
   event.target.remove();
 
   let bombCenter, explodeRadius;
