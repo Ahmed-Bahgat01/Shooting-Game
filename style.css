@@ -253,3 +253,9 @@ body {
 .startGameBtn:hover {
   background-color: green;
 }
+.formErrorMessage {
+  margin: auto;
+  color: red;
+  padding: 10px;
+  font-weight: bold;
+}

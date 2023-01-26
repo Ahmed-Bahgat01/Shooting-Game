@@ -14,14 +14,29 @@ window.addEventListener('load', function () {
   let startGameButton = this.document.querySelector('button');
   startGameButton.onclick = function (event) {
     // TODO: handle user configuration
-
-    document.querySelector('.main-menu').remove();
-
-    // start game
-    let newGame = new GameController(level);
-    newGame.showGame();
+    // take user input
+    const selectLevelElement = document.querySelector(
+      '.levels-select-grid-item'
+    );
+    const name = document.querySelector('.input-grid-item').value;
+    // let name =
+    if (validateInput(name)) {
+      document.querySelector('.main-menu').remove();
+      // start game
+      let newGame = new GameController(level);
+      newGame.showGame(level, name);
+    }
   };
 });
+
+let validateInput = function (name) {
+  if (name == '') {
+    let erroMessageElement = document.querySelector('.formErrorMessage');
+    erroMessageElement.innerHTML = '* Name Is Required';
+    erroMessageElement.classList.remove('hidden');
+    return false;
+  } else return true;
+};
 
 // TODO: get user inputs from form
 // TODO: save user data into local storage

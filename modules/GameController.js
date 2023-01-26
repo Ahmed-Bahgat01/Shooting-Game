@@ -6,28 +6,34 @@ export class GameController {
   constructor() {
     console.log('GameController consturctor');
   }
-  showGame(level) {
-    createStartGameWidget(level);
-    // startGame(level);
+  showGame(level, name) {
+    createStartGameWidget(level, name);
   }
 } //class GameController
 
+//
 // === Utility Functions ===
 //
 
-const createStartGameWidget = function (level) {
+const createStartGameWidget = function (level, playerName) {
+  // TODO: check for name in local storage
   const template = document.querySelector('.startGameWidgetTemplate').content;
   const newWidget = template.cloneNode(true);
+  // TODO: check for name in local storage
+  newWidget.querySelector(
+    '.startGameHeader'
+  ).innerHTML = `Welcome ${playerName}`;
+  // TODO: change last visit  and score
   document.body.append(newWidget);
   const startGameBtn = document.querySelector('.startGameBtn');
   startGameBtn.addEventListener('click', function () {
     document.querySelector('.startGameWidget').remove();
-    startGame(level);
+    startGame(level, playerName);
   });
 };
 
-const startGame = function (level) {
-  createGameHeader();
+const startGame = function (level, playerName) {
+  createGameHeader(playerName);
 
   // listen for killed bird event on score
   document.addEventListener('killedbird', (e) => {
@@ -71,14 +77,12 @@ const startGameTimer = function (
   winScore,
   level
 ) {
-  // console.log('sssssssssssssss');
   const intervalTime = 1000;
   const timeLimitLabel = document.querySelector('.timeLimitLabel');
   let totalTime = gameTime / 1000;
   let minutes;
   let seconds;
   const gameTimeInterval = setInterval(function () {
-    // console.log(`ttttttt: ${totalTime}`);
     minutes = Math.trunc(totalTime / 60);
     seconds = totalTime % 60;
     timeLimitLabel.innerHTML = `${minutes} : ${seconds}`;
@@ -128,13 +132,13 @@ const removeBirdsAndBombs = function () {
   });
 };
 
-const createGameHeader = function () {
+const createGameHeader = function (playerName) {
   let templateGameHeader = document.querySelector(
     '.gameHeaderTemplate'
   ).content;
 
   // prepare values
-  templateGameHeader.querySelector('.playerLabel').innerHTML = `Bahgat`;
+  templateGameHeader.querySelector('.playerLabel').innerHTML = `${playerName}`;
   templateGameHeader.querySelector('.scoreLabel').innerHTML = 0;
   templateGameHeader.querySelector('.timeLimitLabel').innerHTML = `00:00`;
   templateGameHeader.querySelector('.birdsKilledLabel').innerHTML = 0;
