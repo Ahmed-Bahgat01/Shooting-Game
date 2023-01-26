@@ -1,6 +1,3 @@
-import { BirdController } from './BirdController.js';
-import { BombController } from './BombController.js';
-import { ConfigController } from './ConfigController.js';
 import { GameController } from './GameController.js';
 
 window.addEventListener('load', function () {
@@ -22,7 +19,7 @@ window.addEventListener('load', function () {
 
     // start game
     let newGame = new GameController(level);
-    newGame.startGame();
+    newGame.showGame();
   };
 });
 

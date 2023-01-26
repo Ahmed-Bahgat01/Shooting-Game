@@ -12,7 +12,7 @@
     "gameConfigs": {
       "birdCreationInterval": 1000,
       "bombCreationInterval": 5000,
-      "levelTime": 10000,
+      "levelTime": 1000,
       "winScore": 50
     }
   },
@@ -29,7 +29,7 @@
     "gameConfigs": {
       "birdCreationInterval": 1000,
       "bombCreationInterval": 5000,
-      "levelTime": 10000,
+      "levelTime": 1000,
       "winScore": 50
     }
   }

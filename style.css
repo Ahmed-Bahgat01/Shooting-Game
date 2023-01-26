@@ -205,3 +205,51 @@ body {
   /* background-color: rgb(128, 208, 16); */
   background-color: green;
 }
+
+/* ======= start game Widget ================ */
+.startGameWidget {
+  border: solid red;
+  position: absolute;
+  left: 50%;
+  background-color: rgba(128, 128, 128, 0.589);
+  border-color: white;
+  padding: 10px;
+}
+.startGameHeader {
+  display: block;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 20px;
+  color: white;
+  margin: 10px;
+}
+.startGameSubheader {
+  text-align: center;
+  color: lightgreen;
+}
+.lastVisitInfoContainer {
+  width: fit-content;
+  margin: auto;
+  padding: 10px;
+}
+.lastVisitInfoSpan {
+  font-weight: bolder;
+  color: black;
+}
+.lastVisitInfoLabel {
+  color: black;
+}
+.startGameBtn {
+  font-size: 1em;
+  font-weight: bolder;
+  background-color: rgba(0, 128, 0, 0.549);
+  cursor: pointer;
+  margin: auto;
+  padding: 15px;
+  border-radius: 25px;
+  display: block;
+  color: white;
+}
+.startGameBtn:hover {
+  background-color: green;
+}
