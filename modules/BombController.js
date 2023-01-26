@@ -4,14 +4,12 @@ export class BombController {
   #htmlTemplate = document.querySelector('img.bomb-template');
   #level;
   constructor(level = 1) {
-    console.log('Bomb constructor');
     this.#level = level;
   }
 
   throwBomb() {
     const bombConfigs = new ConfigController(this.#level).configs.bombConfigs;
     let newBomb = this.#htmlTemplate.cloneNode();
-    // TODO: ref
     newBomb.style.left = `${Math.floor(Math.random() * window.innerWidth)}px`;
     document.body.append(newBomb);
 
@@ -31,7 +29,6 @@ export class BombController {
 // === Utility Functions ===
 
 let bombClickListener = function (newBomb, explosionRadius) {
-  console.log('bomb clicked');
   let eventData = {
     bombCenter: {
       x: parseInt(newBomb.style.left) + 0.5 * newBomb.width,
@@ -56,10 +53,8 @@ let moveBomb = function (newBomb, bombMovingStep, bombMovingInterval) {
 
     topPosition += bombMovingStep;
     if (topPosition > window.innerHeight) {
-      console.log('bomb will be removed');
       clearInterval(thownBombIntervalID);
       newBomb.remove();
     }
   }, bombMovingInterval);
-  console.log('throw bomb()');
 };

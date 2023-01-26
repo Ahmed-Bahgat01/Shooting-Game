@@ -13,7 +13,6 @@ window.addEventListener('load', function () {
   // start game click listner
   let startGameButton = this.document.querySelector('button');
   startGameButton.onclick = function (event) {
-    // TODO: handle user configuration
     // take user input
     const selectLevelElement = document.querySelector(
       '.levels-select-grid-item'
@@ -37,6 +36,3 @@ let validateInput = function (name) {
     return false;
   } else return true;
 };
-
-// TODO: get user inputs from form
-// TODO: save user data into local storage

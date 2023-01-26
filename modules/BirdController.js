@@ -17,8 +17,6 @@ export class BirdController {
   ];
   #level;
   constructor(level) {
-    console.log('Game constructor');
-    // this.birdConfigs = new ConfigController().configs.birdConfigs;
     this.#level = level;
   }
   get birds() {
@@ -34,12 +32,11 @@ export class BirdController {
     )}px`;
     newBird.classList.add('bird');
 
-    // TODO: no need for those
-    newBird.setAttribute('birdindex', `${randomBirdNumber}`);
-    newBird.setAttribute('points', this.#birds[randomBirdNumber].points);
+    // TODO: no need for those remove
+    // newBird.setAttribute('birdindex', `${randomBirdNumber}`);
+    // newBird.setAttribute('points', this.#birds[randomBirdNumber].points);
 
     newBird.addEventListener('click', () => {
-      console.log('bird clicked');
       let killedScore = this.birds[randomBirdNumber].points;
       const killedevent = new CustomEvent('killedbird', {
         detail: killedScore,
@@ -58,6 +55,5 @@ export class BirdController {
         newBird.remove();
       }
     }, birdConfigs.birdMovingInterval);
-    console.log('fly bird()');
   }
 }

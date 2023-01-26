@@ -3,9 +3,7 @@ import { BombController } from './BombController.js';
 import { ConfigController } from './ConfigController.js';
 
 export class GameController {
-  constructor() {
-    console.log('GameController consturctor');
-  }
+  constructor() {}
   showGame(level, name) {
     createStartGameWidget(level, name);
   }
@@ -16,14 +14,11 @@ export class GameController {
 //
 
 const createStartGameWidget = function (level, playerName) {
-  // TODO: check for name in local storage
   const template = document.querySelector('.startGameWidgetTemplate').content;
   const newWidget = template.cloneNode(true);
-  // TODO: check for name in local storage
   newWidget.querySelector(
     '.startGameHeader'
   ).innerHTML = `Welcome ${playerName}`;
-  // TODO: change last visit  and score
   document.body.append(newWidget);
   const startGameBtn = document.querySelector('.startGameBtn');
   startGameBtn.addEventListener('click', function () {
@@ -66,7 +61,8 @@ const startGame = function (level, playerName) {
     createBombsInterval,
     configs.gameConfigs.levelTime,
     configs.gameConfigs.winScore,
-    level
+    level,
+    playerName
   );
 };
 
@@ -75,7 +71,8 @@ const startGameTimer = function (
   createBombsInterval,
   gameTime,
   winScore,
-  level
+  level,
+  playerName
 ) {
   const intervalTime = 1000;
   const timeLimitLabel = document.querySelector('.timeLimitLabel');
@@ -93,19 +90,22 @@ const startGameTimer = function (
       // remove all birds and bombs
       removeBirdsAndBombs();
       // show win lose div
-      createEndGameWidget(winScore, level);
+
+      createEndGameWidget(winScore, level, playerName);
       clearInterval(gameTimeInterval);
     }
     totalTime -= 1;
   }, intervalTime);
-  console.log(`gameTimeInterval: ${gameTimeInterval}`);
 };
 
-const createEndGameWidget = function (winScore, level) {
+const createEndGameWidget = function (winScore, level, playerName) {
   const endGameWidgetTemplate =
     document.querySelector('.endGameTemplate').content;
   const newEndGameWidget = endGameWidgetTemplate.cloneNode(true);
   const score = parseInt(document.querySelector('.scoreLabel').textContent);
+
+  // save player data into local storage
+  savePlayerData(playerName, score);
   let imgSrc;
   let messageText;
   if (score >= winScore) {
@@ -123,6 +123,11 @@ const createEndGameWidget = function (winScore, level) {
     document.querySelector('.gameHeaderContainer').remove();
     createStartGameWidget(level);
   };
+};
+
+const savePlayerData = function (_name, _score) {
+  let userData = { name: _name, score: _score };
+  window.localStorage.setItem('userData', JSON.stringify(userData));
 };
 
 const removeBirdsAndBombs = function () {
@@ -162,10 +167,7 @@ const bombExplosionListner = function (event) {
   let bombCenter, explodeRadius;
   ({ bombCenter, explodeRadius } = event.detail);
 
-  console.log(`explode r: ${explodeRadius}`);
-
   // check all birds positions to kill near ones
-  // TODO: ref events [click]
   let birds = document.querySelectorAll('.bird');
   let birdCenter = {};
   let difference = {};
@@ -185,7 +187,6 @@ const bombExplosionListner = function (event) {
       difference.x * difference.x + difference.y * difference.y
     );
     if (birdBombDistance < explodeRadius) {
-      console.log('bird auto click');
       bird.click();
     }
   });
