@@ -83,28 +83,30 @@
       </template>
     </div>
 
-    <div class="gameHeaderContainer">
-      <div class="gameHeaderWidget">
-        <span>Player: </span>
-        <label>Ahmed</label>
+    <template class="gameHeaderTemplate">
+      <div class="gameHeaderContainer">
+        <div class="gameHeaderWidget">
+          <span>Player: </span>
+          <label class="playerLabel">Ahmed</label>
+        </div>
+        <div class="gameHeaderWidget">
+          <span>Score: </span>
+          <label class="scoreLabel">0</label>
+        </div>
+        <div class="gameHeaderWidget">
+          <span>Time Limit: </span>
+          <label class="timeLimitLabel">0</label>
+        </div>
+        <div class="gameHeaderWidget">
+          <span>Birds Killed: </span>
+          <label class="birdsKilledLabel">0</label>
+        </div>
+        <div class="gameHeaderWidget">
+          <span>Level: </span>
+          <label class="levelLabel"></label>
+        </div>
       </div>
-      <div class="gameHeaderWidget">
-        <span>Score: </span>
-        <label id="scoreLabel">0</label>
-      </div>
-      <div class="gameHeaderWidget">
-        <span>Time Limit: </span>
-        <label>0</label>
-      </div>
-      <div class="gameHeaderWidget">
-        <span>Birds Killed: </span>
-        <label>0</label>
-      </div>
-      <div class="gameHeaderWidget">
-        <span>Level: </span>
-        <label>1</label>
-      </div>
-    </div>
+    </template>
 
     <!-- <script src="./scripts/BirdController.js"></script>
     <script src="./scripts/BombController.js"></script> -->

@@ -2,15 +2,16 @@
   {
     "birdConfigs": {
       "birdMovingStep": 2,
-      "birdMovingInterval": 500
+      "birdMovingInterval": 20
     },
     "bombConfigs": {
       "bombMovingStep": 2,
-      "bombMovingInterval": 500
+      "bombMovingInterval": 50,
+      "explosionRadius": 200
     },
     "gameConfigs": {
       "birdCreationInterval": 1000,
-      "bombCreationInterval": 1000,
+      "bombCreationInterval": 5000,
       "levelTime": 60000
     }
   },

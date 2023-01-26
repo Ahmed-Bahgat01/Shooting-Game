@@ -1,12 +1,19 @@
+import { ConfigController } from './ConfigController.js';
+
 export class BombController {
   #htmlTemplate = document.querySelector('img.bomb-template');
   #explosionRadius;
-  constructor() {
+  #level;
+  constructor(level) {
     console.log('Bomb constructor');
-    this.#explosionRadius = 500;
+    this.#explosionRadius = 500; //TODO: take from configs only
+    this.#level = level;
+    // this.bombConfigs = new ConfigController(1).configs.bombConfigs;
   }
 
   throwBomb() {
+    const bombConfigs = new ConfigController().configs.bombConfigs;
+    // console.log(this.bombConfigs);
     let newBomb = this.#htmlTemplate.cloneNode();
     // TODO: ref
     newBomb.style.left = `${Math.floor(Math.random() * window.innerWidth)}px`;
@@ -32,19 +39,24 @@ export class BombController {
       });
       newBomb.dispatchEvent(explodeevent);
     });
-    newBomb.classList.remove('hidden');
 
     // move bomb
-    let topPosition = 0;
+    let topPosition = 0 - newBomb.height;
+    newBomb.style.top = `${topPosition}px`;
+    newBomb.classList.remove('hidden');
     let thownBombIntervalID = setInterval(function () {
+      console.log(`pos: ${newBomb.style.top}`);
       newBomb.style.top = `${topPosition}px`;
-      topPosition += 2; // TODO: put steps into configuration files
+      // console.log(`bombstep: ${bombConfigs.bombMovingStep}`);
+      // console.log(`bombinterval: ${bombConfigs.bombMovingInterval}`);
+
+      topPosition += bombConfigs.bombMovingStep; // TODO: put steps into configuration files
       if (topPosition > window.innerHeight) {
         console.log('bomb will be removed');
         clearInterval(thownBombIntervalID);
         newBomb.remove();
       }
-    }, 50);
+    }, bombConfigs.bombMovingInterval);
     console.log('throw bomb()');
   }
 }

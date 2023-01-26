@@ -1,3 +1,5 @@
+import { ConfigController } from './ConfigController.js';
+
 export class BirdController {
   #birds = [
     {
@@ -13,13 +15,17 @@ export class BirdController {
       htmlTemplate: document.querySelector('img.red-sparrow-template'),
     },
   ];
-  constructor() {
+  #level;
+  constructor(level) {
     console.log('Game constructor');
+    // this.birdConfigs = new ConfigController().configs.birdConfigs;
+    this.#level = level;
   }
   get birds() {
     return this.#birds;
   }
   flyRandomBird() {
+    const birdConfigs = new ConfigController().configs.birdConfigs;
     let randomBirdNumber = Math.floor(Math.random() * this.#birds.length);
     let newBird = this.#birds[randomBirdNumber].htmlTemplate.cloneNode();
     document.body.append(newBird);
@@ -46,12 +52,12 @@ export class BirdController {
 
     let flyBirdIntervalID = setInterval(function () {
       newBird.style.left = `${leftPosition}px`;
-      leftPosition += 2;
+      leftPosition += birdConfigs.birdMovingStep;
       if (leftPosition > window.innerWidth) {
         clearInterval(flyBirdIntervalID);
         newBird.remove();
       }
-    }, 50);
+    }, birdConfigs.birdMovingInterval);
     console.log('fly bird()');
   }
 }
