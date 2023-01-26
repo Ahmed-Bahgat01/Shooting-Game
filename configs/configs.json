@@ -7,7 +7,7 @@
     "bombConfigs": {
       "bombMovingStep": 2,
       "bombMovingInterval": 50,
-      "explosionRadius": 200
+      "explosionRadius": 300
     },
     "gameConfigs": {
       "birdCreationInterval": 1000,
@@ -24,7 +24,7 @@
     "bombConfigs": {
       "bombMovingStep": 2,
       "bombMovingInterval": 50,
-      "explosionRadius": 200
+      "explosionRadius": 300
     },
     "gameConfigs": {
       "birdCreationInterval": 1000,

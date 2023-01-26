@@ -144,18 +144,22 @@ body {
 }
 
 .red-sparrow-template {
+  cursor: pointer;
   width: 150px;
 }
 
 .brown-duck-template {
   width: 200px;
+  cursor: pointer;
 }
 
 .white-duck-template {
+  cursor: pointer;
   width: 150px;
 }
 .bomb-template {
   width: 150px;
+  cursor: pointer;
   z-index: 5;
 }
 
